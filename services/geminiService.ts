@@ -55,18 +55,40 @@ export const editImageWithGemini = async (image: File | string, prompt: string):
         mimeType = image.type;
     }
 
-    const response = await ai.models.generateContent({
-        model: 'gemini-2.5-flash-image-preview',
-        contents: {
-            parts: [
-                { inlineData: { data: base64Data, mimeType: mimeType } },
-                { text: prompt },
-            ],
-        },
-        config: {
-            responseModalities: [Modality.IMAGE, Modality.TEXT],
-        },
-    });
+    let response;
+    try {
+        response = await ai.models.generateContent({
+            model: 'gemini-2.5-flash-image-preview',
+            contents: {
+                parts: [
+                    { inlineData: { data: base64Data, mimeType: mimeType } },
+                    { text: prompt },
+                ],
+            },
+            config: {
+                responseModalities: [Modality.IMAGE, Modality.TEXT],
+            },
+        });
+    } catch (error: any) {
+        console.error("Error calling Gemini API:", error);
+
+        // The SDK might throw an error where the message is a JSON string.
+        // We'll try to parse it to provide a more user-friendly message.
+        try {
+            if (error && typeof error.message === 'string') {
+                const errorDetails = JSON.parse(error.message);
+                if (errorDetails?.error?.code === 429) {
+                    throw new Error("You've exceeded your API quota. Please check your plan and billing details.");
+                }
+            }
+        } catch (e) {
+            // The message was not JSON, or it didn't have the expected structure.
+            // Fall through to the generic error.
+        }
+        
+        // For any other API error, throw a generic but friendly message.
+        throw new Error("An error occurred while communicating with the AI. Please try again later.");
+    }
 
     let newImageBase64: string | null = null;
     let newText = "";
