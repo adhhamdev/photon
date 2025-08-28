@@ -58,7 +58,7 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({ onImageUpload }) => {
         onDrop={handleDrop}
     >
         <div className={`w-full max-w-2xl text-center animate-fade-in mx-auto flex flex-col items-center justify-center p-8 rounded-lg transition-colors ${isDragging ? 'bg-indigo-950/50' : ''}`}>
-            <h1 className="text-3xl font-bold text-gray-100 mb-2">Your photos, perfected with AI</h1>
+            <h2 className="text-3xl font-bold text-gray-100 mb-2">Your photos, perfected with AI</h2>
             <p className="text-gray-400 mb-8 max-w-md">Upload an image to get started. Remove backgrounds, add objects, change colors, and more using simple text prompts.</p>
             <ActionButton 
                 onClick={openFileDialog}
