@@ -2,7 +2,7 @@ const CACHE_NAME = 'photon-pwa-v1';
 const APP_SHELL_URLS = [
   '/',
   '/index.html',
-  '/index.tsx',
+  '/manifest.json'
 ];
 
 // On install, cache the core application shell files.
