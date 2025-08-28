@@ -155,6 +155,7 @@ const ImageEditor: React.FC<ImageEditorProps> = ({ imageFile }) => {
 
     return (
         <div className="w-full h-full flex flex-col animate-fade-in pb-24">
+            <h1 className="sr-only">Image Editor</h1>
             <div className="flex-grow flex items-center justify-center p-2 sm:p-4 relative min-h-0">
                 <div className="relative w-full max-w-[512px] aspect-square bg-gray-950/50 border border-gray-800 rounded-lg sm:rounded-xl shadow-2xl flex items-center justify-center overflow-hidden">
                     {isLoading && (

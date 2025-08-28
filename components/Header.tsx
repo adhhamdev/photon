@@ -14,9 +14,9 @@ const Header: React.FC<HeaderProps> = ({ onReset, hasImage }) => {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center space-x-3">
             <PhotoIcon className="h-8 w-8 text-purple-400" />
-            <h1 className="text-xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-500">
+            <p className="text-xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-500">
               Photon
-            </h1>
+            </p>
           </div>
           {hasImage && (
              <ActionButton
