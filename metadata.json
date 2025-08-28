@@ -1,0 +1,5 @@
+{
+  "name": "Photon",
+  "description": "Photon: An AI-powered photo editing application that allows you to retouch, adjust, filter, and modify images using simple text prompts.",
+  "requestFramePermissions": []
+}
